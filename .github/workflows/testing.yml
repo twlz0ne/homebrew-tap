@@ -22,10 +22,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-18.04
-          - macos-10.15
-          - macos-11.0
+        include:
+          - os: ubuntu-18.04
+          - os: macos-10.15
+          - os: macos-10.15
+            env: { MACOSX_DEPLOYMENT_TARGET: 10.13 }
+          - os: macos-11.0
     runs-on: ${{matrix.os}}
     steps:
       - name: Set up Homebrew
